@@ -3,22 +3,22 @@
 ## Configurations
 
 ```
-INSTALLED\_APPS = [
+INSTALLED_APPS = [
 ...
-    'rest\_framework',
-    'rest\_framework\_simplejwt',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ...
 ]
-REST\_FRAMEWORK = {
-    'DEFAULT\_PERMISSION\_CLASSES': ('rest\_framework.permissions.IsAuthenticated',),
-    'DEFAULT\_AUTHENTICATION\_CLASSES': (
-        'rest\_framework\_simplejwt.authentication.JWTAuthentication',
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
 DATABASES {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql\_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': '{dbname}',
         'USER': '{dbuser}',
         'PASSWORD': '{dbuserpassword}',
@@ -30,14 +30,14 @@ DATABASES {
 
 ## Generic views
 ```
-from rest\_framework import generics, status, viewsets
-from rest\_framework.response import Response
-from rest\_framework.permissions import IsAuthenticated
+from rest_framework import generics, status, viewsets
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 class SampleModelViewSet(viewsets.ModelViewSet):
-    permissions\_classes = [IsAuthenticated]
-    queryset = Sample.objects.all() # use def get\_queryset(self):... to customize
-    serializer\_class = SampleSerializer
+    permissions_classes = [IsAuthenticated]
+    queryset = Sample.objects.all() # use def get_queryset(self):... to customize
+    serializer_class = SampleSerializer
 
 # generics classes, self describing:
 
@@ -49,14 +49,14 @@ class SampleModelViewSet(viewsets.ModelViewSet):
 # generics.UpdateAPIView
 # generics.ValidationError
 # generics.ListAPIView
-# generics.api\_settings
+# generics.api_settings
 # generics.ListCreateAPIView
-# generics.get\_object\_or\_404
+# generics.get_object_or_404
 # generics.QuerySet
 # generics.RetrieveAPIView
 # generics.RetrieveDestroyAPIView
 
-# rest\_framework.permissions:
+# rest_framework.permissions:
 # AllowAny
 # IsAdminUser
 # IsAuthenticated
@@ -66,9 +66,9 @@ class SampleModelViewSet(viewsets.ModelViewSet):
 
 ## Routing
 ```
-from rest\_framework.router import DefaultRouter
+from rest_framework.router import DefaultRouter
 router = DefaultRouter()
-router.register('{path\_name}', SampleViewSet, basename='{path\_name}')
+router.register('{path_name}', SampleViewSet, basename='{path_name}')
 
 urlpatterns += router.urls
 ```
@@ -77,9 +77,9 @@ urlpatterns += router.urls
 ```
 from rest_framework import serializers
 #assign user to field
-created\_by = serializers.HiddenField(default=serializers.CurrentUserDefault())
+created_by = serializers.HiddenField(default=serializers.CurrentUserDefault())
 #assign current datetime to field
-created\_at = serializers.DateTimeField(default=serializers.CreateOnlyDefault(timezone.now))
+created_at = serializers.DateTimeField(default=serializers.CreateOnlyDefault(timezone.now))
 # Example meta
     class Meta:
         model: Sample
