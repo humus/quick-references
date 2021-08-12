@@ -21,6 +21,7 @@ sed -i "/id .java./a \\\tid 'eclipse'" build.gradle
 ./gradlew eclipseClean
 ./gradlew compileJava
 ./gradlew compileTestJava
+./gradlew bootRun
 ```
 
 ## Ease development (fake jar technique)
