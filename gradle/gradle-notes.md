@@ -18,7 +18,7 @@ sed -i "/id .java./a \\\tid 'eclipse'" build.gradle
 ## Gradle goals/tasks
 ```
 ./gradlew eclipse
-./gradlew eclipseClean
+./gradlew cleanEclipse
 ./gradlew compileJava
 ./gradlew compileTestJava
 ./gradlew bootRun
